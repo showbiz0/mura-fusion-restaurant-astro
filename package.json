@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "deploy": "npm run build && winscp.com /script=deploy.txt",
     "preview": "astro preview",
     "astro": "astro"
   },

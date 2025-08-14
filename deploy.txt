@@ -1,0 +1,6 @@
+option batch abort
+option confirm off
+open murafusionrestaurant.it
+lcd "C:/Users/samue/Documents/Coding/Web/mura-fusion-restaurant"
+synchronize remote -delete -criteria=date ./dist /httpdocs
+exit

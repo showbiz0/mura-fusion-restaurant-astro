@@ -1,14 +1,14 @@
 ---
 const { title } = Astro.props;
 
-import '@fontsource-variable/montserrat';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "@fontsource-variable/montserrat";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
-import 'aos/dist/aos.css';
+import "aos/dist/aos.css";
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Modal from '../components/Modal.astro';
+import Modal from "../components/Modal.astro";
 ---
 
 <!doctype html>
@@ -25,10 +25,12 @@ import Modal from '../components/Modal.astro';
         <title>{title}</title>
     </head>
     <body>
-        <!-- <Modal url="/menu/menu-pranzo.pdf" buttonText="Scopri il menù">
-            <strong>Festeggia il capodanno con noi!</strong><br />
-            Musica dal vivo, divertimento e tanto cibo di qualità!
-        </Modal> -->
+        <Modal title="Chiusura per ferie" valid="2025-08-22">
+            Mura Fusion Restaurant sarà chiuso dal 16 al 22 agosto per le
+            vacanze estive. Riapriremo venerdì 23 agosto con tante novità e la
+            solita passione di sempre! Grazie per la comprensione e buone
+            vacanze anche a voi!
+        </Modal>
 
         <Header />
 
@@ -41,19 +43,19 @@ import Modal from '../components/Modal.astro';
     :root {
         --accent: #8f7600;
         --black: #000000;
-        --white: #F1F1F1;
-        
+        --white: #f1f1f1;
+
         --header-height: 5.29rem;
         --desktop-header-height: 9.29rem;
     }
-    
+
     html {
         scroll-behavior: smooth;
     }
     body {
         margin: 0;
         padding: 0;
-        font-family: 'Montserrat Variable';
+        font-family: "Montserrat Variable";
     }
     main {
         display: flex;
@@ -76,11 +78,17 @@ import Modal from '../components/Modal.astro';
         height: auto;
     }
 
-    p, a, h1, h2, h3, h4 {
+    p,
+    a,
+    h1,
+    h2,
+    h3,
+    h4 {
         margin: 0;
-        font-family: 'Montserrat Variable';
+        font-family: "Montserrat Variable";
     }
-    p, li {
+    p,
+    li {
         font-weight: 500;
     }
     h2 {
@@ -101,7 +109,8 @@ import Modal from '../components/Modal.astro';
         main section:first-of-type {
             margin-top: var(--desktop-header-height);
         }
-        section p:first-of-type, p:first-of-type a {
+        section p:first-of-type,
+        p:first-of-type a {
             font-size: 1.5rem;
             max-width: 75rem;
         }
@@ -110,7 +119,9 @@ import Modal from '../components/Modal.astro';
             max-width: 27.5rem;
         }
 
-        p, li, a {
+        p,
+        li,
+        a {
             font-size: 1.25rem;
         }
         h2 {
@@ -123,7 +134,7 @@ import Modal from '../components/Modal.astro';
 </style>
 
 <script>
-    import AOS from 'aos';
-    
-    AOS.init({once: true});
+    import AOS from "aos";
+
+    AOS.init({ once: true });
 </script>

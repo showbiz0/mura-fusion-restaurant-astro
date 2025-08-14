@@ -1,9 +1,10 @@
 ---
-const { url, buttonText } = Astro.props;
+const { title, valid, url, buttonText } = Astro.props;
 ---
 
-<div id="modal">
+<div id="modal" data-valid={valid}>
     <h2>AVVISO</h2>
+    <h3>{title}</h3>
     <p><slot /></p>
     {buttonText !== undefined && <a href={url}>{buttonText}</a>}
 
@@ -29,7 +30,13 @@ const { url, buttonText } = Astro.props;
     h2 {
         font-size: 2rem;
     }
+    h3 {
+        font-size: 1.5rem;
+        color: var(--white);
+        font-weight: bold;
+    }
     p {
+        max-width: 75rem;
         color: var(--white);
         text-align: center;
     }
@@ -71,19 +78,27 @@ const { url, buttonText } = Astro.props;
 </style>
 
 <script>
+    const modal = document.getElementById('modal');
+    const body = document.querySelector('body');
+    const valid = new Date().toISOString().slice(0, 10) <= modal.dataset.valid;
+
     function closeModal() {
-        document.querySelector('#modal').remove();
-        document.querySelector('body').style.height = 'auto';
-        document.querySelector('body').style.overflowY = 'auto';
+        modal.remove();
+        body.style.height = 'auto';
+        body.style.overflowY = 'auto';
     }
 
-    document.querySelector('#close').addEventListener('click', closeModal);
+    function showModal() {
+        modal.style.display = 'flex';
+        body.style.height = '100vh';
+        body.style.overflowY = 'hidden';
+    }
+
+    document.getElementById('close').addEventListener('click', closeModal);
 
     // Open modal here so that people with JS disabled don't see it because they wouldn't be able to close it and also we set session storage
-    if (sessionStorage.getItem('modal_viewed') !== '1') {
-        document.querySelector('#modal').style.display = 'flex';
-        document.querySelector('body').style.height = '100vh';
-        document.querySelector('body').style.overflowY = 'hidden';
+    if (valid && sessionStorage.getItem('modal_viewed') !== '1') {
+        showModal();
     }
 
     sessionStorage.setItem('modal_viewed', '1');
